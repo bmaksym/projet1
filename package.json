@@ -1,0 +1,66 @@
+{
+  "name": "projet_prod_amfnc",
+  "version": "1.0.0",
+  "description": "Projet de Production 1 - Ski API",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrankBol/Projet_Prod_AMFNC.git"
+  },
+  "keywords": [
+    "ski",
+    "api",
+    "node",
+    "ejs",
+    "axios"
+  ],
+  "author": "Equipe AMFNC",
+  "contributors": [
+    {
+      "name": "Amy Bienvenu",
+      "email": "amy.bienvenu@outlook.com",
+      "url": "https://github.com/amypurple"
+    },
+    {
+      "name": "Maksym Bondarenko",
+      "email": "maksymbondarenko83@gmail.com",
+      "url": "https://github.com/bmaksym"
+    },
+    {
+      "name": "Francis Bolduc",
+      "email": "f.bolduc@outlook.com",
+      "url": "https://github.com/FrankBol"
+    },
+    {
+      "name": "Nathalie Nicolas",
+      "email": "nanic001@edu.cegepgarneau.ca",
+      "url": "https://github.com/Nathalie-newdev"
+    },
+    {
+      "name": "Christopher Petryk",
+      "email": "chpet001@edu.cegepgarneau.ca",
+      "url": "https://github.com/ChristWeb"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrankBol/Projet_Prod_AMFNC/issues"
+  },
+  "homepage": "https://github.com/FrankBol/Projet_Prod_AMFNC#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
