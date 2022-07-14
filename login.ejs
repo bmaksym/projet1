@@ -1,0 +1,16 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<div class="container">
+  <form action="/users/login" method="post" name="form1" class="box">
+    <h4>BIEN<span>VENUE</span></h4>
+    <h5>Connectez-vous.</h5>
+    <input type="text" name="email" id="email" required placeholder="Email" autocomplete="off"><br>
+    <input type="password" name="password" id="password" required placeholder="Mot de Passe" autocomplete="off"><br>
+    <input type="submit" value="Connexion" class="btn btnLarge" onclick="login()">
+  </form>
+  <%- include("partials/messages") -%>
+  <a href="/users/signup" class="link">Créer le compte!</a>
+</div>
+
+    <%- include('./partials/footer'); -%>

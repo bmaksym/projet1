@@ -1,0 +1,78 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/navbar') -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<% page = Number(page);
+    let pageNombre = 5;
+    let pageNombreChaqueCote = Math.floor(pageNombre / 2);
+    let pageMinimum = page-pageNombreChaqueCote;
+    let pageMaximum = page+pageNombreChaqueCote;
+    if (pageMinimum<1){pageMaximum = pageNombre; pageMinimum = 1; }
+    if (pageMaximum>totalPages){pageMinimum = totalPages + 1 - pageNombre; pageMaximum = totalPages; }
+    if (pageMinimum<1){pageMinimum = 1; }
+    if (pageMaximum>totalPages){pageMaximum = totalPages; }
+%>
+
+<div class="center"> 
+
+    <form action="/<%= (page==1)?totalPages:page-1 %>" method="get">  
+        <input type="submit" class="btn btnLarge" value="Précédent">
+    </form>
+
+    <div class="marginPagination">   
+        <%  for (var i = pageMinimum; i <= pageMaximum ; i++){%>
+            <a class="<%= (page == i)?'paginationActive':'pagination' %>" href="/<%= i %>"> <%= i %> </a>  
+        <% } %>
+    </div>
+    <form action="/<%= (page==totalPages)?1:page+1 %>" method="get">  
+        <input type="submit" class="btn btnLarge" value="Suivant">
+    </form>
+</div>
+<div class="center">
+    <div class="spots">
+        <% spots.forEach(spot => { %>
+        <div class="spots-item">
+            <div>
+                <div class="spots-information">
+                    <h2><%= spot.name %></h2>
+                    <p>Description: <%= spot.description %></p>
+                    <p>Addresse: <%= spot.address %></p>
+                    <p>Difficulté: <%= spot.difficulty %></p>
+                    <p>Coordonnées: <%= spot.coordinates %></p>
+                </div>
+                <div class="spots-image">
+                    <a href="https://cypress-acidic-chard.glitch.me/?pic=<%= spot._id %>">
+                        <img src="https://cypress-acidic-chard.glitch.me/?thumbnail=<%= spot._id %>">
+                    </a>
+                </div>
+            </div>
+            <div class="spots-buttons">
+                <form action="/spots/delete/<%= spot._id %>?_method=delete" method="post" style="width:auto;">
+                    <button class="btn btnSmall">Supprimer</button></form>
+                <form action="/spots/update/<%= spot._id %>?" method="get" style="width:auto;"><button
+                        class="btn btnSmall">Modifier</button></form>
+                <form action="/spots/<%= spot._id %>" method="get" style="width:auto;"><button
+                        class="btn btnSmall">Information</button></form>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+<div class="center"> 
+
+    <form action="/<%= (page==1)?totalPages:page-1 %>" method="get">  
+        <input type="submit" class="btn btnLarge" value="Précédent">
+    </form>
+
+    <div class="marginPagination">   
+        <%  for (var i = pageMinimum; i <= pageMaximum ; i++){%>
+            <a class="<%= (page == i)?'paginationActive':'pagination' %>" href="/<%= i %>"> <%= i %> </a>  
+        <% } %>
+    </div>
+    <form action="/<%= (page==totalPages)?1:page+1 %>" method="get">  
+        <input type="submit" class="btn btnLarge" value="Suivant">
+    </form>
+</div>
+
+<%- include('./partials/footer'); -%>

@@ -1,0 +1,25 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/navbar') -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<div class="container">
+    <label>
+        Nom:
+    </label><span class="defaultSize"><%= info.name %></span><br>
+    <label>
+        Description:
+    </label><span class="defaultSize"><%= info.description %></span><br>
+    <label>
+        Adresse:
+    </label><span class="defaultSize"><%= info.address %></span><br>
+    <label>
+        Difficulté:
+    </label><span class="defaultSize"><%= info.difficulty %></span><br>
+    <label>
+        Coordonnées:
+    </label><span class="defaultSize"><%= info.coordinates %></span>
+    <form method="get" action="/"><input type="submit" class="btn btnLarge" value="Spots"></form>
+</div>
+
+<%- include('./partials/footer'); -%>
+

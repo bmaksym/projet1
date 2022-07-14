@@ -1,0 +1,16 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<div class="container">
+    <form action="/users/signup" method="post" name="form1" class="box">
+      <h4>BIEN<span>VENUE</span></h4>
+      <h5>Création de compte!</h5>
+        <input type="text" name="email" id="email" required placeholder="Email" autocomplete="off"><br>
+        <input type="password" name="password" id="password" required placeholder="Mot de Passe" autocomplete="off"><br>
+        <input type="text" name="name" id="name" placeholder="Nom" required><br>
+        <input type="submit" value="Créer" class="btn btnLarge">
+      </form>
+      <%- include("partials/messages") -%>
+      <a href="/" class="link">Déjà Membre? <br> Connectez-vous!</a>
+  </div>
+  <%- include('./partials/footer'); -%>

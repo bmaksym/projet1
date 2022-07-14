@@ -1,0 +1,59 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/navbar') -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<div class="container">
+  <div class="header__class">
+    <h4>BIEN<span>VENUE</span></h4>
+    <h5>Profil de <%= infoUser.name %>.</h5>
+  </div>
+
+    <div class="user one"></div>
+    <%- include('./partials/messages'); -%>
+    <div class="profil__main">
+      <div class="info__profil">
+        <p><span>Nom: </span><%= infoUser.name %></p>
+        <p><span>Email: </span><%= infoUser.email %></p>
+      </div>
+      <div class="image__profil">
+        <img src="/image/chris.png">
+      </div>
+
+
+      <% if(!infoProfil.friends.find(e =>{return e.id===infoUser.id;})) { %> 
+      <form action="/users/add" method="post" style="width:auto;">
+        <input type="hidden" name="friendId" id="friendId" value="<%= infoUser.id %>">
+        <input type="hidden" name="name" id="name" value="<%= infoUser.name %>">
+        <button class="btn btnSmall">Ajouter</button>
+      </form>
+       
+      <% }else{%><button class="btn btnSmall" style="background:rgb(109, 109, 109)!important">Déjà Ami</button><%} %>
+    </div>
+
+    <hr width="100%">
+    <div><span class="defaultSize">
+      
+        <% infoUser.friends.forEach(friend => {
+              if (friend!=null) { 
+              %>
+   
+       
+        <div class="friend__wrap">
+          <div style="display:flex; flex-direction:column;justify-content:center; text-align:left; width:50%;">
+            <a style="color:mediumslateblue; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif;"
+              href="/users/<%= friend.id %>"><%= friend.name %></a>
+          </div>
+          <% if(!(infoProfil._id==friend.id || infoProfil.friends.find(e =>{return e.id===friend.id;}))) { %> 
+            <form action="/users/add" method="post" style="width:auto;">
+              <input type="hidden" name="friendId" id="friendId" value="<%= friend.id %>">
+              <input type="hidden" name="name" id="name" value="<%= friend.name %>">
+              <button class="btn btnSmall">Ajouter</button>
+            </form>
+          <% }else{%><button class="btn btnSmall" style="background:rgb(109, 109, 109)!important">Déjà Ami</button><%} %>
+        </div>
+        <% }}) %>
+      </span></div>
+
+  </div>
+</div>
+<%- include('./partials/footer'); -%>

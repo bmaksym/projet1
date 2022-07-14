@@ -1,0 +1,49 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/navbar') -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<div class="container">
+    <div class="header__class">
+      <h4>BIEN<span>VENUE</span></h4>
+      <h5>Votre Profil</h5>
+    </div>
+    <div class="profil__main">
+      <div class="info__profil">
+        <p><span>Nom: </span><%= infoProfil.name %></p>
+        <p><span>Email: </span><%= infoProfil.email %></p>
+      </div>
+      <div class="image__profil">
+        <img src="/image/chris.png">
+      </div>
+    </div>
+
+    <div class="search__friends">
+      <div class="flex" style ="justify-content: center;"><%- include('./partials/messages'); -%></div>
+      <form style="display:flex;" action="/users/search" method="get" name="rechercher" class="box">
+        <input type="text" name="words" id="words" placeholder="Nom à rechercher">
+        <button class="btn btnSmall">Rechercher</button>
+      </form>
+    </div>
+    <div class="friends__list">
+    <hr width="100%">
+    <div><span class="defaultSize">
+        Vous avez <%= infoProfil.friends.length %> ami<% if(infoProfil.friends.length>1) { %>s<% } %>
+        <% infoProfil.friends.forEach(friend => {
+          if (friend!=null) { 
+          %>
+        <div style="display:flex;justify-content:space-between;">
+          <div style="display:flex; flex-direction:column;justify-content:center; text-align:left; width:50%;">
+            <a style="color:mediumslateblue; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif;"
+              href="/users/<%= friend.id %>"><%= friend.name %></a>
+          </div>
+          <form action="/users/delete/<%= friend.id %>?_method=delete" method="post" style="width:auto;">
+            <button class="btn btnSmall">Supprimer</button>
+          </form>
+        </div>
+        <% }}) %>
+      </span></div>
+    </div>
+    
+
+</div>
+<%- include('./partials/footer'); -%>

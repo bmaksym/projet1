@@ -1,0 +1,21 @@
+<!-- Navigation-->
+<header class="nav-sticky">
+<nav class="navbar flex">
+    <div class="flex">
+        <a class="flex" href="/"><img class="icon" src="/image/logo.jpg" alt="logo"></a>
+        <ul class="flex">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/spots/create">Ajouter Spot</a></li>
+            <li><a href="/users/search">Rechercher</a></li>
+        </ul>
+    </div>
+    <div class="flex">
+        <div class="nom-profil"><%= infoProfil.name %></div>
+        <div class="flex">   
+            <a href="/users/<%= infoProfil._id %>"><img class="icon" src="/image/chris.png" alt="profil"></a>
+            <a href="/users/logout">Déconnexion</a>
+        </div>
+    </div>
+</nav>
+</header>
+

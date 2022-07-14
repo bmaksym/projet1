@@ -1,0 +1,5 @@
+<% if(!!flashMessages.success) {%>
+    <div class="alert"><%= flashMessages.success %></div>
+<%}else if (!!flashMessages.error){%>
+    <div class="error"><%= flashMessages.error%></div>
+<%}%>

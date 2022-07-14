@@ -1,0 +1,36 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/navbar') -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<div class="container">
+  <h2>Rechercher</h2>
+    <%- include('./partials/messages'); -%>
+      <form style="display:flex;" action="/users/search" method="get" name="rechercher" class="box">
+        <input type="text" name="words" id="words" placeholder="Nom à rechercher">
+        <button class="btn btnSmall">Rechercher</button>
+      </form>          
+    <div><span class="defaultSize">
+        <% if(users) { %>Il y a <%=users.length%> résultat<% if (users.length>1) {%>s<%}%><%}%>
+        <% users.forEach(user => {
+              if (user!=null) { 
+              %>
+   
+        <div style="display:flex;justify-content:space-between;">
+          <div style="display:flex; flex-direction:column;justify-content:center; text-align:left; width:50%;">
+            <a style="color:mediumslateblue; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif;"
+              href="/users/<%= user.id %>"><%= user.name %></a>
+          </div>
+          <% if(!(infoProfil._id==user.id || infoProfil.friends.find(e =>{return e.id===user.id;}))) { %> 
+            <form action="/users/add" method="post" style="width:auto;">
+              <input type="hidden" name="friendId" id="friendId" value="<%= user.id %>">
+              <input type="hidden" name="name" id="name" value="<%= user.name %>">
+              <button class="btn btnSmall">Ajouter</button>
+            </form>
+          <% }else{%><button class="btn btnSmall" style="background:rgb(109, 109, 109)!important">Déjà Ami</button><%} %>
+        </div>
+        <% }}) %>
+      </span></div>
+
+  </div>
+</div>
+<%- include('./partials/footer'); -%>

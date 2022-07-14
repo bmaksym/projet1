@@ -1,0 +1,22 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/navbar') -%>
+<%- include('./partials/titrePrincipal'); -%>
+
+<div class="container">
+    <%- include("partials/messages") -%>
+    <form action="/spots/create" method="post" class="box">
+        <label for="name">Nom: </label>
+        <input type="text" name="name" placeholder="Nom du Spot"><br>
+        <label for="name">Description: </label>
+        <input type="text" name="description" placeholder="Description"><br>
+        <label for="name">Adresse: </label>
+        <input type="text" name="address" placeholder="Adresse"><br>
+        <label for="name">Difficulté: </label>
+        <input type="text" name="difficulty" placeholder="Dificulté"><br>
+        <label for="name">Coordonnées: </label>
+        <input type="text" name="coordinates" placeholder="Coordinates"><br>
+        <input type="submit" class="btn btnLarge" value="Créer">
+    </form>
+    <form method="get" action="/"><input type="submit" class="btn btnLarge" value="Spots"></form>
+</div>
+<%- include('./partials/footer'); -%>
